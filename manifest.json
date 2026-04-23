@@ -1,0 +1,27 @@
+{
+    "name": "Creative Spot Inventory",
+    "short_name": "CSInventory",
+    "description": "Ofrecemos una experiencia moderna y dinamica en la venta de gorras F1",
+    "icons": [
+        {
+            "src": "view/img/csinventory.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        },
+        {
+            "src": "view/img/csinventory.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "view/img/csinventory.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "https://datacent.pro/csinventory/",
+    "scope": "https://datacent.pro/csinventory/",
+    "theme_color": "#080808",
+    "background_color": "#082e57",
+    "display": "standalone"
+}
