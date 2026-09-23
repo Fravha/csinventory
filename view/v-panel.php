@@ -86,7 +86,7 @@ $authSession = function_exists('auth_user') ? auth_user() : null;
 
                 <?php if (auth_can_module('producto', $authSession)): ?>
                     <div class='menu-item'>
-                        <a href='producto/c-producto-list.php'>
+                        <a href='producto/c-producto-panel.php'>
                             <div class='menu-item-pic ico-2'></div>
                             <div class='menu-item-title'>Articulos</div>
                             <div class='clear'></div>
@@ -113,7 +113,7 @@ $authSession = function_exists('auth_user') ? auth_user() : null;
             <div class='menu'>
                 <?php if (auth_can_module('compra', $authSession)): ?>
                     <div class='menu-item'>
-                        <a href='compra/c-compra-list.php'>
+                        <a href='compra/c-compra-panel.php'>
                             <div class='menu-item-pic ico-3'></div>
                             <div class='menu-item-title'>Compras</div>
                             <div class='clear'></div>

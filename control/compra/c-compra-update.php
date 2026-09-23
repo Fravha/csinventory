@@ -1,12 +1,5 @@
 <?php
 
-/**
- * @author      Francisco Bailaba
- * @company     Bylaba Projects
- * @copyright   2026
- * @version     1.0
- */
-
 require_once __DIR__ . "/../authz.php";
 require_once "../../model/RN_Compra.php";
 require_once "../../model/data/Compra.php";
@@ -16,16 +9,17 @@ require_once "../config-app.php";
 auth_require_action("compra", "manage", "../c-panel.php");
 
 if (!$_POST) {
-    header("Location: c-compra-new.php");
+    header("Location: c-compra-list.php");
     exit();
 }
 
 try {
+    $hashCompra = isset($_POST["hashCompra"]) ? trim($_POST["hashCompra"]) : "";
     $proveedor_nombre = isset($_POST["proveedor_nombre"]) ? trim($_POST["proveedor_nombre"]) : "";
     $idAlmacen = isset($_POST["idAlmacen"]) ? (int)$_POST["idAlmacen"] : 0;
     $fecha_compra_raw = isset($_POST["fecha_compra"]) ? trim($_POST["fecha_compra"]) : "";
     $observacion = isset($_POST["observacion"]) ? trim($_POST["observacion"]) : "";
-    $estado = "CONFIRMADA";
+    $estado = isset($_POST["estado"]) ? trim($_POST["estado"]) : "CONFIRMADA";
 
     $idProducto = isset($_POST["idProducto"]) ? $_POST["idProducto"] : array();
     $tipoCompra = isset($_POST["tipoCompra"]) ? $_POST["tipoCompra"] : array();
@@ -34,6 +28,10 @@ try {
     $cantidad = isset($_POST["cantidad"]) ? $_POST["cantidad"] : array();
     $precio = isset($_POST["precio"]) ? $_POST["precio"] : array();
     $total_linea = isset($_POST["total_linea"]) ? $_POST["total_linea"] : array();
+
+    if ($hashCompra === "") {
+        throw new Exception("Compra no valida.");
+    }
 
     $fecha_compra = ($fecha_compra_raw != "")
         ? date("Y-m-d H:i:s", strtotime($fecha_compra_raw))
@@ -123,7 +121,7 @@ try {
 
     $oCompra = new Compra(
         0,
-        "",
+        $hashCompra,
         "",
         $proveedor_nombre,
         $idAlmacen,
@@ -136,17 +134,18 @@ try {
     );
 
     $oRN_Compra = new RN_Compra();
-    $res = $oRN_Compra->Save($oCompra, $listaDetalle);
+    $res = $oRN_Compra->Update($oCompra, $listaDetalle);
 
     if ($res) {
-        header("Location: c-compra-list.php?msg=ok");
+        header("Location: c-compra-list.php?msg=updated");
         exit();
     }
 
-    header("Location: c-compra-new.php?error=No se pudo registrar la compra.");
+    header("Location: c-compra-edit.php?param=" . urlencode($hashCompra) . "&error=" . urlencode("No se pudo actualizar la compra."));
     exit();
 } catch (Exception $ex) {
-    header("Location: c-compra-new.php?error=" . urlencode($ex->getMessage()));
+    $hashCompra = isset($hashCompra) ? $hashCompra : "";
+    header("Location: c-compra-edit.php?param=" . urlencode($hashCompra) . "&error=" . urlencode($ex->getMessage()));
     exit();
 }
 ?>

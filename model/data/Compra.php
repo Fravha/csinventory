@@ -7,29 +7,45 @@
  * @version     1.0
  */
 
-class Compra{
+class Compra {
     public $idCompra;
     public $hashCompra;
-    public $idProducto;
+    public $numero_compra;
+    public $proveedor_nombre;
     public $idAlmacen;
-    public $lote;
-    public $cantidad;
-    public $precioUnitario;
-    public $fechaCompra;
+    public $fecha_compra;
+    public $observacion;
+    public $estado;
+    public $subtotal;
+    public $total;
     public $deletedAt;
 
-    function __construct($_idCompra, $_hashCompra, $_idProducto, $_idAlmacen, $_lote, $_cantidad, $_precioUnitario, $_fechaCompra, $_deletedAt)
-    {
+    function __construct(
+        $_idCompra,
+        $_hashCompra,
+        $_numero_compra,
+        $_proveedor_nombre,
+        $_idAlmacen,
+        $_fecha_compra,
+        $_observacion,
+        $_estado,
+        $_subtotal,
+        $_total,
+        $_deletedAt
+    ) {
         $this->idCompra = $_idCompra;
         $this->hashCompra = $_hashCompra;
-        $this->idProducto = $_idProducto;
+        $this->numero_compra = $_numero_compra;
+        $this->proveedor_nombre = $_proveedor_nombre;
         $this->idAlmacen = $_idAlmacen;
-        $this->lote = $_lote;
-        $this->cantidad = $_cantidad;
-        $this->precioUnitario = $_precioUnitario;
-        $this->fechaCompra = $_fechaCompra;
+        $this->fecha_compra = $_fecha_compra;
+        $this->observacion = $_observacion;
+        $this->estado = $_estado;
+        $this->subtotal = $_subtotal;
+        $this->total = $_total;
         $this->deletedAt = $_deletedAt;
     }
 }
+
 
 ?>

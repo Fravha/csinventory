@@ -39,16 +39,16 @@ $nomUsuario = $oUsuario->nombre;
         <!-- Menu -->
         <div class='menu'>
             <div class='menu-item'>
-                <a href='../receta/c-receta-new.php'>
+                <a href='c-producto-new.php'>
                     <div class='menu-item-pic ico-1'></div>
-                    <div class='menu-item-title'>Recetas</div>
+                    <div class='menu-item-title'>Nuevo Artículo</div>
                     <div class='clear'></div>
                 </a>
             </div>
             <div class='menu-item'>
                 <a href='c-producto-list.php'>
                     <div class='menu-item-pic ico-2'></div>
-                    <div class='menu-item-title'>Artículos</div>
+                    <div class='menu-item-title'>Ver Artículos</div>
                     <div class='clear'></div>
                 </a>
             </div>

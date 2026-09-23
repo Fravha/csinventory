@@ -131,9 +131,14 @@ class RN_Receta extends DataBase {
      */
     function CalcularCostoProduccion($_idReceta){
         $sql = "SELECT SUM(rd.cantidad_necesaria * (
-                    SELECT c.precio_unitario_compra FROM compras c 
-                    WHERE c.idProducto = rd.idProducto 
-                    ORDER BY c.fecha_compra DESC LIMIT 1
+                    SELECT cd.precio_unitario_base
+                    FROM compra_detalle cd
+                    INNER JOIN compras c ON c.idCompra = cd.idCompra
+                    WHERE cd.idProducto = rd.idProducto
+                      AND cd.deleted_at IS NULL
+                      AND c.deleted_at IS NULL
+                    ORDER BY c.fecha_compra DESC, cd.idCompraDetalle DESC
+                    LIMIT 1
                 )) as costoTotal
                 FROM receta_detalles rd
                 WHERE rd.idReceta = " . $_idReceta;

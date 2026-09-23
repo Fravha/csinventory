@@ -8,6 +8,12 @@ $oUsuario = auth_require_domain_user("../c-panel.php", "producto", "view");
 $oRN_Producto = new RN_Producto();
 
 $listaProductos = $oRN_Producto->GetList();
+/*
+echo "<pre>";
+var_dump($listaProductos);
+echo "</pre>";
+exit;
+*/
 
 include_once "../../view/producto/v-producto-list.php";
 

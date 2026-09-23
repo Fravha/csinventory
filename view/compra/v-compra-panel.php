@@ -54,6 +54,15 @@ $authSession = function_exists('auth_user') ? auth_user() : null;
                     </a>
                 </div>
             <?php endif; ?>
+            <?php if (auth_can_action('compra', 'view', $authSession)): ?>
+                <div class='menu-item'>
+                    <a href='../ppresentacion/c-ppresentacion-list.php'>
+                        <div class='menu-item-pic ico-2'></div>
+                        <div class='menu-item-title'>Lista de Presentacion de Productos</div>
+                        <div class='clear'></div>
+                    </a>
+                </div>
+            <?php endif; ?>
         </div>
         <div class='clear'></div>
     </div>

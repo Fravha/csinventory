@@ -1,4 +1,10 @@
 <?php
+/**
+ * @author      Francisco Bailaba
+ * @company     Bylaba Projects
+ * @copyright   2026
+ * @version     1.0
+ */
 
 require_once __DIR__ . "/../auth-user.php";
 require_once "../../model/RN_Producto.php";

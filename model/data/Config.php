@@ -1,5 +1,3 @@
 <?php
-
-define('UK', "@Prog4");
-
+    define('UK', "@Prog4");
 ?>

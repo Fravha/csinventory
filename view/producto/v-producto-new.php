@@ -43,11 +43,13 @@ $nomUsuario = $oUsuario->nombre;
 
             <div class='x-2'>
                 <div class='data-label'>Unidad de Medida</div>
-                <select name='unidad_medida' class='input-form' required>
-                    <option value='Unidad'>Unidad (pza)</option>
-                    <option value='Litros'>Litros (lt)</option>
-                    <option value='Metros'>Metros (m)</option>
-                    <option value='Hojas'>Hojas (pág)</option>
+                <select name='idUnidadMedida' class='input-form' required>
+                    <option value="">Seleccione unidad</option>
+                        <?php foreach ($listaUnidades as $unidad): ?>
+                            <option value="<?= $unidad->idUnidad ?>">
+                                <?= $unidad->nombre ?> (<?= $unidad->abreviatura ?>)
+                            </option>
+                        <?php endforeach; ?>
                 </select>
             </div>
 

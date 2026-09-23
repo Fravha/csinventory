@@ -20,7 +20,7 @@ foreach($listaProductos as $oProducto){
     $hashProducto = $oProducto->hashProducto;
     $nombre = $oProducto->nombre;
     $sku = $oProducto->sku;
-    $unidad_medida = $oProducto->unidad_medida;
+    $unidad_nombre = $oProducto->unidad_nombre;
     $tipo = $oProducto->tipo;
     $badgeColor = ($tipo == 'Insumo') ? '#5bc0de' : '#5cb85c';
 
@@ -37,7 +37,7 @@ foreach($listaProductos as $oProducto){
             </div>
             <div class='x-2'>
                 <div class='card-title'>Medida</div>
-                <div class='card-text'>" . $unidad_medida . "</div>
+                <div class='card-text'>" . $unidad_nombre . "</div>
             </div>
             
             <div class='clear'></div>

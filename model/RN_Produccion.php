@@ -22,11 +22,13 @@ class RN_Produccion extends DataBase
 
         $sql = "SELECT rd.idProducto, rd.cantidad_necesaria, i.stock_actual, p.nombre,
                 (
-                    SELECT c.precio_unitario_compra
-                    FROM compras c
-                    WHERE c.idProducto = rd.idProducto
+                    SELECT cd.precio_unitario_base
+                    FROM compra_detalle cd
+                    INNER JOIN compras c ON c.idCompra = cd.idCompra
+                    WHERE cd.idProducto = rd.idProducto
+                      AND cd.deleted_at IS NULL
                       AND c.deleted_at IS NULL
-                    ORDER BY c.idCompra DESC
+                    ORDER BY c.fecha_compra DESC, cd.idCompraDetalle DESC
                     LIMIT 1
                 ) AS ultimoPrecio
                 FROM receta_detalles rd
